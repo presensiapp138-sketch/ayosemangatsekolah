@@ -1,0 +1,34 @@
+[
+  {
+    "id": "sch-smpn1",
+    "name": "SMP Negeri 1 Nusantara",
+    "code": "SMPN1",
+    "npsn": "20104051",
+    "address": "Jl. Merdeka No. 45, Jakarta Pusat",
+    "phone": "021-3456789",
+    "salt": "2504ad22e3a5620c772a4651d5c6cc77",
+    "passwordHash": "f38b5f6f3c7233e06c4d469e3f63d084a76fcd2bcdf156689f2037b4c38ca55c093ec36787b3514d15b1e7b2db70ef271d3290173fe6802da2b2255a8d7e334f",
+    "isActive": true,
+    "driveFolderId": "1AbCdEfGhIjKlMnOpQrStUvWxYz",
+    "spreadsheetId": "1a2b3c4d5e6f7g8h9i0j-presensi-smpn1",
+    "lastSyncTime": "2026-10-28T10:20:00.408Z",
+    "syncStatus": "connected",
+    "createdAt": "2026-10-28T10:20:00.409Z"
+  },
+  {
+    "id": "sch-sman2",
+    "name": "SMA Negeri 2 Bangsa",
+    "code": "SMAN2",
+    "npsn": "20109922",
+    "address": "Jl. Pemuda Bangsa No. 12, Jakarta Selatan",
+    "phone": "021-7890123",
+    "salt": "f090a90c3f58a611ec2ef16b687b697b",
+    "passwordHash": "a9595fc9930a94f8e17176116048246e20ca44c36bc9e8e928237cc2ed635109ba2988b58a255234fee7623ff9ae39d2d26362d6497c166e7ab268c573fbe13f",
+    "isActive": true,
+    "driveFolderId": "",
+    "spreadsheetId": "",
+    "lastSyncTime": "",
+    "syncStatus": "disconnected",
+    "createdAt": "2026-10-28T10:20:00.417Z"
+  }
+]

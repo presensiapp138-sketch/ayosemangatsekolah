@@ -1,0 +1,6 @@
+{
+  "name": "Sistem Presensi Sekolah Multi-Tenant",
+  "description": "Aplikasi presensi sekolah multi-tenant berbasis Google Drive dan Google Sheets dengan login sekolah tanpa email, manajemen hak akses, presensi manual, barcode/RFID, izin kamar mandi, dan rekapitulasi data.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

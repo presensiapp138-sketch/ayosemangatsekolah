@@ -1,0 +1,463 @@
+{
+  "konfigurasiSekolah": {
+    "tenantId": "sch-sman2",
+    "schoolName": "SMA Negeri 2 Bangsa",
+    "npsn": "20109922",
+    "address": "Jl. Pendidikan Utama Indonesia",
+    "phone": "021-1234567",
+    "lateThresholdMinutes": 15,
+    "bathroomSettings": {
+      "maxBabMinutes": 10,
+      "maxBakMinutes": 5,
+      "maxConcurrentPerClass": 2,
+      "maxPermitsPerStudentPerDay": 2
+    }
+  },
+  "pengguna": [
+    {
+      "id": "usr-admin-1",
+      "tenantId": "sch-sman2",
+      "username": "admin",
+      "fullName": "Administrator Sekolah",
+      "role": "admin",
+      "email": "admin@sekolah.id",
+      "salt": "8ba20c4fdad76d748bea1a4148a8c4ca",
+      "pinHash": "c106212cfe32403ae1fd725e199459109272e6fa23ed181a768efd7716b258ec792ff4bdfd1f94042a0c04548d7e8da5cd66550182172aef73ddf0476de48b2c",
+      "isActive": true,
+      "createdAt": "2026-10-25T11:41:44.971Z"
+    },
+    {
+      "id": "usr-petugas-1",
+      "tenantId": "sch-sman2",
+      "username": "petugas1",
+      "fullName": "Petugas Piket Gerbang",
+      "role": "petugas",
+      "email": "petugas@sekolah.id",
+      "salt": "fcb31ce88dc811dc6beee4d825723c80",
+      "pinHash": "6cbef39025ae60ac47fb5665e38c14c0a7a845e6d5ffacb36dfdfff08962f9793fd2d10c7d92af68aaf00d611b9ea93a28f78252064ca20f39583cbf1502e32d",
+      "isActive": true,
+      "createdAt": "2026-10-25T11:41:44.978Z"
+    },
+    {
+      "id": "usr-wali-1",
+      "tenantId": "sch-sman2",
+      "username": "walikelas7a",
+      "fullName": "Budi Santoso, S.Pd.",
+      "role": "wali_kelas",
+      "assignedClassId": "cls-7a",
+      "email": "budi@sekolah.id",
+      "salt": "675cbba8dda1fafd9d4e9a21f3c3c048",
+      "pinHash": "0557b99f7346d3094ec88d5fc7afefb5b3045cd40c347a9214eca8fd424de83788d574aca288fedda0d106c8e496de03e9f0a2d984c3ae320711553ec6bfe130",
+      "isActive": true,
+      "createdAt": "2026-10-25T11:41:44.984Z"
+    },
+    {
+      "id": "usr-kesiswaan-1",
+      "tenantId": "sch-sman2",
+      "username": "kesiswaan",
+      "fullName": "Siti Rahmawati, M.Pd.",
+      "role": "kesiswaan",
+      "email": "kesiswaan@sekolah.id",
+      "salt": "d1ba0d6ca9a6c5cea9bc882e32e858a9",
+      "pinHash": "f879c2dc28535b8b857dea75e15b75c9f8debdd162641ddc8ca6235bfa2d8d4c8894bd9788b01208c26131008912ea8bdc8ff227e0519be87cd0902f1ab1024b",
+      "isActive": true,
+      "createdAt": "2026-10-25T11:41:44.991Z"
+    },
+    {
+      "id": "usr-kepsek-1",
+      "tenantId": "sch-sman2",
+      "username": "kepsek",
+      "fullName": "Drs. Hendro Wibowo, M.M.",
+      "role": "kepala_sekolah",
+      "email": "kepsek@sekolah.id",
+      "salt": "7e8e6ab3199bc03b50ee18d5f9358269",
+      "pinHash": "416620ed3430afe9b15c924e09de066c44ffda09209dcfad70cd93493376a73f658d6a3cbe7c326512c20db93ee5ca31dddc98ac04c4b91327d41e08188bb9fd",
+      "isActive": true,
+      "createdAt": "2026-10-25T11:41:44.998Z"
+    }
+  ],
+  "tahunAjaran": [
+    {
+      "id": "ay-2026-2027",
+      "tenantId": "sch-sman2",
+      "name": "2026/2027",
+      "isActive": true
+    }
+  ],
+  "semester": [
+    {
+      "id": "sem-ganjil",
+      "tenantId": "sch-sman2",
+      "academicYearId": "ay-2026-2027",
+      "name": "Ganjil",
+      "isActive": true
+    }
+  ],
+  "program": [
+    {
+      "id": "prog-reguler",
+      "tenantId": "sch-sman2",
+      "name": "Reguler Umum",
+      "code": "REG",
+      "description": "Kurikulum Nasional Reguler",
+      "isActive": true
+    },
+    {
+      "id": "prog-tahfidz",
+      "tenantId": "sch-sman2",
+      "name": "Program Tahfidz & Keagamaan",
+      "code": "TFZ",
+      "description": "Program Khusus Tahfidz Al-Quran",
+      "isActive": true
+    },
+    {
+      "id": "prog-mipa",
+      "tenantId": "sch-sman2",
+      "name": "Peminatan MIPA / Sains",
+      "code": "MIPA",
+      "description": "Matematika dan Ilmu Pengetahuan Alam",
+      "isActive": true
+    }
+  ],
+  "kelas": [
+    {
+      "id": "cls-7a",
+      "tenantId": "sch-sman2",
+      "academicYearId": "ay-2026-2027",
+      "programId": "prog-tahfidz",
+      "programName": "Program Tahfidz & Keagamaan",
+      "name": "VII-A",
+      "grade": 7,
+      "waliKelasId": "usr-wali-1",
+      "waliKelasName": "Budi Santoso, S.Pd.",
+      "waliKelasPassword": "wali123",
+      "isActive": true
+    },
+    {
+      "id": "cls-7b",
+      "tenantId": "sch-sman2",
+      "academicYearId": "ay-2026-2027",
+      "programId": "prog-reguler",
+      "programName": "Reguler Umum",
+      "name": "VII-B",
+      "grade": 7,
+      "waliKelasId": "tch-2",
+      "waliKelasName": "Siti Rahmawati, M.Pd.",
+      "waliKelasPassword": "wali123",
+      "isActive": true
+    },
+    {
+      "id": "cls-8a",
+      "tenantId": "sch-sman2",
+      "academicYearId": "ay-2026-2027",
+      "programId": "prog-mipa",
+      "programName": "Peminatan MIPA / Sains",
+      "name": "VIII-A",
+      "grade": 8,
+      "waliKelasId": "tch-3",
+      "waliKelasName": "Drs. Hendro Wibowo",
+      "waliKelasPassword": "wali123",
+      "isActive": true
+    },
+    {
+      "id": "cls-9a",
+      "tenantId": "sch-sman2",
+      "academicYearId": "ay-2026-2027",
+      "programId": "prog-reguler",
+      "programName": "Reguler Umum",
+      "name": "IX-A",
+      "grade": 9,
+      "waliKelasId": "",
+      "waliKelasName": "",
+      "waliKelasPassword": "wali123",
+      "isActive": true
+    }
+  ],
+  "siswa": [
+    {
+      "id": "std-1",
+      "tenantId": "sch-sman2",
+      "nis": "26001",
+      "nisn": "0081234001",
+      "fullName": "Ahmad Faiz Pratama",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-01",
+      "isActive": true
+    },
+    {
+      "id": "std-2",
+      "tenantId": "sch-sman2",
+      "nis": "26002",
+      "nisn": "0081234002",
+      "fullName": "Annisa Putri Cahyani",
+      "gender": "P",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-02",
+      "isActive": true
+    },
+    {
+      "id": "std-3",
+      "tenantId": "sch-sman2",
+      "nis": "26003",
+      "nisn": "0081234003",
+      "fullName": "Bagas Aditya Nugraha",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-03",
+      "isActive": true
+    },
+    {
+      "id": "std-4",
+      "tenantId": "sch-sman2",
+      "nis": "26004",
+      "nisn": "0081234004",
+      "fullName": "Cantika Dewi Maharani",
+      "gender": "P",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-04",
+      "isActive": true
+    },
+    {
+      "id": "std-5",
+      "tenantId": "sch-sman2",
+      "nis": "26005",
+      "nisn": "0081234005",
+      "fullName": "Daffa Rizky Ramadhan",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-05",
+      "isActive": true
+    },
+    {
+      "id": "std-6",
+      "tenantId": "sch-sman2",
+      "nis": "26006",
+      "nisn": "0081234006",
+      "fullName": "Elisa Permata Sari",
+      "gender": "P",
+      "classId": "cls-7b",
+      "className": "VII-B",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7B-01",
+      "isActive": true
+    },
+    {
+      "id": "std-7",
+      "tenantId": "sch-sman2",
+      "nis": "26007",
+      "nisn": "0081234007",
+      "fullName": "Fajar Hidayatullah",
+      "gender": "L",
+      "classId": "cls-7b",
+      "className": "VII-B",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7B-02",
+      "isActive": true
+    },
+    {
+      "id": "std-8",
+      "tenantId": "sch-sman2",
+      "nis": "26008",
+      "nisn": "0081234008",
+      "fullName": "Gita Larasati",
+      "gender": "P",
+      "classId": "cls-8a",
+      "className": "VIII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-8A-01",
+      "isActive": true
+    },
+    {
+      "id": "std-9",
+      "tenantId": "sch-sman2",
+      "nis": "26009",
+      "nisn": "0081234009",
+      "fullName": "Hendra Gunawan",
+      "gender": "L",
+      "classId": "cls-8a",
+      "className": "VIII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-8A-02",
+      "isActive": true
+    },
+    {
+      "id": "std-10",
+      "tenantId": "sch-sman2",
+      "nis": "26010",
+      "nisn": "0081234010",
+      "fullName": "Indah Kusumawardani",
+      "gender": "P",
+      "classId": "cls-9a",
+      "className": "IX-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-9A-01",
+      "isActive": true
+    }
+  ],
+  "guru": [
+    {
+      "id": "tch-1",
+      "tenantId": "sch-sman2",
+      "nip": "198501152010011002",
+      "fullName": "Budi Santoso, S.Pd.",
+      "email": "budi.santoso@sekolah.sch.id",
+      "phone": "081234567890",
+      "isActive": true
+    },
+    {
+      "id": "tch-2",
+      "tenantId": "sch-sman2",
+      "nip": "198703222012022001",
+      "fullName": "Siti Rahmawati, M.Pd.",
+      "email": "siti.rahmawati@sekolah.sch.id",
+      "phone": "081298765432",
+      "isActive": true
+    },
+    {
+      "id": "tch-3",
+      "tenantId": "sch-sman2",
+      "nip": "197906102005011004",
+      "fullName": "Drs. Hendro Wibowo",
+      "email": "hendro.wibowo@sekolah.sch.id",
+      "phone": "081345678901",
+      "isActive": true
+    }
+  ],
+  "waliKelas": [
+    {
+      "id": "wk-1",
+      "tenantId": "sch-sman2",
+      "teacherId": "tch-1",
+      "classId": "cls-7a",
+      "academicYearId": "ay-2026-2027",
+      "isActive": true
+    }
+  ],
+  "jadwalPresensi": [
+    {
+      "id": "sch-pagi",
+      "tenantId": "sch-sman2",
+      "sessionName": "Pagi",
+      "entryStartTime": "06:30",
+      "entryLimitTime": "07:00",
+      "lateLimitTime": "07:30",
+      "exitTime": "14:30",
+      "operationalDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "isActive": true
+    }
+  ],
+  "presensi": [
+    {
+      "id": "att-demo-1",
+      "tenantId": "sch-sman2",
+      "date": "2026-10-25",
+      "sessionId": "sch-pagi",
+      "studentId": "std-1",
+      "studentName": "Ahmad Faiz Pratama",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "hadir",
+      "method": "rfid",
+      "recordedAt": "2026-10-25T06:45:00+07:00",
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang",
+      "notes": "Tepat waktu",
+      "history": []
+    },
+    {
+      "id": "att-demo-2",
+      "tenantId": "sch-sman2",
+      "date": "2026-10-25",
+      "sessionId": "sch-pagi",
+      "studentId": "std-4",
+      "studentName": "Cantika Dewi Maharani",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "terlambat",
+      "method": "barcode",
+      "recordedAt": "2026-10-25T07:12:00+07:00",
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang",
+      "notes": "Terlambat 12 menit",
+      "history": []
+    },
+    {
+      "id": "att-demo-3",
+      "tenantId": "sch-sman2",
+      "date": "2026-10-25",
+      "sessionId": "sch-pagi",
+      "studentId": "std-2",
+      "studentName": "Annisa Putri Cahyani",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "sakit",
+      "method": "manual",
+      "recordedAt": "2026-10-25T07:20:00+07:00",
+      "recordedByUserId": "usr-admin-1",
+      "recordedByUserName": "Administrator Sekolah",
+      "notes": "Surat dokter terlampir",
+      "history": []
+    }
+  ],
+  "riwayatPresensi": [],
+  "izinKamarMandi": [
+    {
+      "id": "prm-1",
+      "tenantId": "sch-sman2",
+      "date": "2026-10-25",
+      "studentId": "std-3",
+      "studentName": "Bagas Aditya Nugraha",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "type": "BAK",
+      "maxMinutes": 5,
+      "timeOut": "2026-10-25T11:39:44.998Z",
+      "timeIn": "2026-10-25T11:44:00.000Z",
+      "actualDurationMinutes": 4.2,
+      "isReturned": true,
+      "isOverdue": false,
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang"
+    }
+  ],
+  "perangkatScan": [
+    {
+      "id": "dev-1",
+      "tenantId": "sch-sman2",
+      "name": "Scanner Pintu Utama 1",
+      "type": "barcode_rfid",
+      "location": "Gerbang Depan",
+      "isActive": true
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "log-1",
+      "tenantId": "sch-sman2",
+      "timestamp": "2026-10-25T11:41:44.998Z",
+      "action": "SISTEM_INIT",
+      "module": "Sistem",
+      "userId": "system",
+      "userName": "Sistem Otomatis",
+      "details": "Inisialisasi database tenant berhasil."
+    }
+  ],
+  "backupSnapshots": []
+}

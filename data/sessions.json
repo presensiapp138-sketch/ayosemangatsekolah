@@ -1,0 +1,65 @@
+[
+  {
+    "token": "sess-d8c58d0ac95093736537f040a9177820669502787f851f7d",
+    "tenantId": "sch-smpn1",
+    "createdAt": 1792817313055
+  },
+  {
+    "token": "super-80c13e2a5fce12b410e828da9e3e18ec308fd5dea5eeb0c4",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "createdAt": 1792817456521
+  },
+  {
+    "token": "super-3aafde42e74a6b064f082bca4ef97d3ee45b677977d170ba",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "email": "presensiapp138@gmail.com",
+    "createdAt": 1793102882554
+  },
+  {
+    "token": "super-450544328f552292487d0e97eef999a17d7df3f123b1b7f5",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "email": "presensiapp138@gmail.com",
+    "createdAt": 1793183105236
+  },
+  {
+    "token": "sess-26a1034754240bb33359f97cfaaffef305458b9077fe43e1",
+    "tenantId": "sch-smpn1",
+    "createdAt": 1793183187180,
+    "userId": "usr-petugas-temp-1793183191930",
+    "userName": "Petugas Piket",
+    "userRole": "petugas"
+  },
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoicHJlc2Vuc2lhcHAxMzhAZ21haWwuY29tIiwiaXNzIjoicHJlc2Vuc2ktbWFzdGVyLXN5c3RlbSIsImlhdCI6MTc5MzE4Mzc2MiwiZXhwIjoxNzkzMjEyNTYyfQ.xFDp0pJWTEbSL-8wtWtatL4ybfgdVoXzXV5f9n3LJrk",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "email": "presensiapp138@gmail.com",
+    "createdAt": 1793183762650,
+    "expiresAt": 1793212562650
+  },
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoicHJlc2Vuc2lhcHAxMzhAZ21haWwuY29tIiwiaXNzIjoicHJlc2Vuc2ktbWFzdGVyLXN5c3RlbSIsImlhdCI6MTc5MzE4NDQ1OSwiZXhwIjoxNzkzMjEzMjU5fQ.kD78G4w5W8zC5BA-RMCf96rAurprNovwTkVLKwTocKo",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "email": "presensiapp138@gmail.com",
+    "createdAt": 1793184459667,
+    "expiresAt": 1793213259667
+  },
+  {
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoicHJlc2Vuc2lhcHAxMzhAZ21haWwuY29tIiwiaXNzIjoicHJlc2Vuc2ktbWFzdGVyLXN5c3RlbSIsImlhdCI6MTc5MzE4NDQ2NiwiZXhwIjoxNzkzMjEzMjY2fQ.UzYgwhlbmP45NyZmrBUVnhoa-IWCh_YsglJ979wC3YM",
+    "tenantId": "global",
+    "isSuperAdmin": true,
+    "userRole": "superadmin",
+    "email": "presensiapp138@gmail.com",
+    "createdAt": 1793184466181,
+    "expiresAt": 1793213266181
+  }
+]

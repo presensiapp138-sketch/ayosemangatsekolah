@@ -1,0 +1,453 @@
+{
+  "konfigurasiSekolah": {
+    "tenantId": "sch-smpn1",
+    "schoolName": "SMP Negeri 1 Nusantara",
+    "npsn": "20104051",
+    "address": "Jl. Pendidikan Utama Indonesia",
+    "phone": "021-1234567",
+    "lateThresholdMinutes": 15,
+    "bathroomSettings": {
+      "maxBabMinutes": 10,
+      "maxBakMinutes": 5,
+      "maxConcurrentPerClass": 2,
+      "maxPermitsPerStudentPerDay": 2
+    }
+  },
+  "pengguna": [
+    {
+      "id": "usr-admin-1",
+      "tenantId": "sch-smpn1",
+      "username": "admin",
+      "fullName": "Administrator Sekolah",
+      "role": "admin",
+      "email": "admin@sekolah.id",
+      "salt": "d4cb89246bf39b7f1c8fe52c885b65b5",
+      "pinHash": "709b4bc4414fd4eb3d2df11847215e4e17d577bd088af14ff4fdf1f2ea0103b9c0c92b8cf1ffd2ad00451eb8577fd49bedce055b0ac966fbc6abcc863bac1a62",
+      "isActive": true,
+      "createdAt": "2026-10-23T12:00:23.468Z"
+    },
+    {
+      "id": "usr-petugas-1",
+      "tenantId": "sch-smpn1",
+      "username": "petugas1",
+      "fullName": "Petugas Piket Gerbang",
+      "role": "petugas",
+      "email": "petugas@sekolah.id",
+      "salt": "29e6b800c080d0f07ac277e1358cf4ad",
+      "pinHash": "0f64effd7a7a188be0a1b7bbb9e1c858b69b53cfcc40acc5bd69fd92e20fad9dcd5af19c6b01627e4d9ab8ff0f83280aa94ff11b89b94a33111fd6790d22f64c",
+      "isActive": true,
+      "createdAt": "2026-10-23T12:00:23.474Z"
+    },
+    {
+      "id": "usr-wali-1",
+      "tenantId": "sch-smpn1",
+      "username": "walikelas7a",
+      "fullName": "Budi Santoso, S.Pd.",
+      "role": "wali_kelas",
+      "assignedClassId": "cls-7a",
+      "email": "budi@sekolah.id",
+      "salt": "242e36c0068faddfdae64d6313cc25bb",
+      "pinHash": "0fda5712c262bf44dcb12bc3092cc91485930e8b0713db605eb7c073690f988cf59cca12ac611dac783d81e15f75910eebad681128b234d32526b04eb1f6249d",
+      "isActive": true,
+      "createdAt": "2026-10-23T12:00:23.480Z"
+    },
+    {
+      "id": "usr-kesiswaan-1",
+      "tenantId": "sch-smpn1",
+      "username": "kesiswaan",
+      "fullName": "Siti Rahmawati, M.Pd.",
+      "role": "kesiswaan",
+      "email": "kesiswaan@sekolah.id",
+      "salt": "70b9cbabea1611d40b59b461dda2d973",
+      "pinHash": "a87fddaf9ace86ee334c6a5f096495dbb38f1c5a1192f39fb03eabc56e2bd6251eae76c5cab3b6009f963c14d18587b4548dd7a3cb6e72212c3c2561f712e1f2",
+      "isActive": true,
+      "createdAt": "2026-10-23T12:00:23.485Z"
+    },
+    {
+      "id": "usr-kepsek-1",
+      "tenantId": "sch-smpn1",
+      "username": "kepsek",
+      "fullName": "Drs. Hendro Wibowo, M.M.",
+      "role": "kepala_sekolah",
+      "email": "kepsek@sekolah.id",
+      "salt": "b8dfa37831f067bdabd8c01fc7341731",
+      "pinHash": "1721093bc30c5e1ee70f1b45db60f40a5d089219cd42a2d82044cca7f98039d31c017b59c05115cfd72e8af94d844897b67a5591b2c1786d54e5f54861d51c42",
+      "isActive": true,
+      "createdAt": "2026-10-23T12:00:23.491Z"
+    }
+  ],
+  "tahunAjaran": [
+    {
+      "id": "ay-2026-2027",
+      "tenantId": "sch-smpn1",
+      "name": "2026/2027",
+      "isActive": true
+    }
+  ],
+  "semester": [
+    {
+      "id": "sem-ganjil",
+      "tenantId": "sch-smpn1",
+      "academicYearId": "ay-2026-2027",
+      "name": "Ganjil",
+      "isActive": true
+    }
+  ],
+  "kelas": [
+    {
+      "id": "cls-7a",
+      "tenantId": "sch-smpn1",
+      "academicYearId": "ay-2026-2027",
+      "name": "VII-A",
+      "grade": 7,
+      "waliKelasId": "usr-wali-1",
+      "isActive": true
+    },
+    {
+      "id": "cls-7b",
+      "tenantId": "sch-smpn1",
+      "academicYearId": "ay-2026-2027",
+      "name": "VII-B",
+      "grade": 7,
+      "waliKelasId": "",
+      "isActive": true
+    },
+    {
+      "id": "cls-8a",
+      "tenantId": "sch-smpn1",
+      "academicYearId": "ay-2026-2027",
+      "name": "VIII-A",
+      "grade": 8,
+      "waliKelasId": "",
+      "isActive": true
+    },
+    {
+      "id": "cls-9a",
+      "tenantId": "sch-smpn1",
+      "academicYearId": "ay-2026-2027",
+      "name": "IX-A",
+      "grade": 9,
+      "waliKelasId": "",
+      "isActive": true
+    }
+  ],
+  "siswa": [
+    {
+      "id": "std-1",
+      "tenantId": "sch-smpn1",
+      "nis": "26001",
+      "nisn": "0081234001",
+      "fullName": "Ahmad Faiz Pratama",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-01",
+      "hasFaceRegistered": true,
+      "isActive": true
+    },
+    {
+      "id": "std-2",
+      "tenantId": "sch-smpn1",
+      "nis": "26002",
+      "nisn": "0081234002",
+      "fullName": "Annisa Putri Cahyani",
+      "gender": "P",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-02",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-3",
+      "tenantId": "sch-smpn1",
+      "nis": "26003",
+      "nisn": "0081234003",
+      "fullName": "Bagas Aditya Nugraha",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-03",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-4",
+      "tenantId": "sch-smpn1",
+      "nis": "26004",
+      "nisn": "0081234004",
+      "fullName": "Cantika Dewi Maharani",
+      "gender": "P",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-04",
+      "hasFaceRegistered": true,
+      "isActive": true
+    },
+    {
+      "id": "std-5",
+      "tenantId": "sch-smpn1",
+      "nis": "26005",
+      "nisn": "0081234005",
+      "fullName": "Daffa Rizky Ramadhan",
+      "gender": "L",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7A-05",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-6",
+      "tenantId": "sch-smpn1",
+      "nis": "26006",
+      "nisn": "0081234006",
+      "fullName": "Elisa Permata Sari",
+      "gender": "P",
+      "classId": "cls-7b",
+      "className": "VII-B",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7B-01",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-7",
+      "tenantId": "sch-smpn1",
+      "nis": "26007",
+      "nisn": "0081234007",
+      "fullName": "Fajar Hidayatullah",
+      "gender": "L",
+      "classId": "cls-7b",
+      "className": "VII-B",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-7B-02",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-8",
+      "tenantId": "sch-smpn1",
+      "nis": "26008",
+      "nisn": "0081234008",
+      "fullName": "Gita Larasati",
+      "gender": "P",
+      "classId": "cls-8a",
+      "className": "VIII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-8A-01",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-9",
+      "tenantId": "sch-smpn1",
+      "nis": "26009",
+      "nisn": "0081234009",
+      "fullName": "Hendra Gunawan",
+      "gender": "L",
+      "classId": "cls-8a",
+      "className": "VIII-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-8A-02",
+      "hasFaceRegistered": false,
+      "isActive": true
+    },
+    {
+      "id": "std-10",
+      "tenantId": "sch-smpn1",
+      "nis": "26010",
+      "nisn": "0081234010",
+      "fullName": "Indah Kusumawardani",
+      "gender": "P",
+      "classId": "cls-9a",
+      "className": "IX-A",
+      "academicYearId": "ay-2026-2027",
+      "barcodeRfidCode": "CARD-9A-01",
+      "hasFaceRegistered": false,
+      "isActive": true
+    }
+  ],
+  "guru": [
+    {
+      "id": "tch-1",
+      "tenantId": "sch-smpn1",
+      "nip": "198501152010011002",
+      "fullName": "Budi Santoso, S.Pd.",
+      "email": "budi.santoso@sekolah.sch.id",
+      "phone": "081234567890",
+      "isActive": true
+    },
+    {
+      "id": "tch-2",
+      "tenantId": "sch-smpn1",
+      "nip": "198703222012022001",
+      "fullName": "Siti Rahmawati, M.Pd.",
+      "email": "siti.rahmawati@sekolah.sch.id",
+      "phone": "081298765432",
+      "isActive": true
+    },
+    {
+      "id": "tch-3",
+      "tenantId": "sch-smpn1",
+      "nip": "197906102005011004",
+      "fullName": "Drs. Hendro Wibowo",
+      "email": "hendro.wibowo@sekolah.sch.id",
+      "phone": "081345678901",
+      "isActive": true
+    }
+  ],
+  "waliKelas": [
+    {
+      "id": "wk-1",
+      "tenantId": "sch-smpn1",
+      "teacherId": "tch-1",
+      "classId": "cls-7a",
+      "academicYearId": "ay-2026-2027",
+      "isActive": true
+    }
+  ],
+  "jadwalPresensi": [
+    {
+      "id": "sch-pagi",
+      "tenantId": "sch-smpn1",
+      "sessionName": "Pagi",
+      "entryStartTime": "06:30",
+      "entryLimitTime": "07:00",
+      "lateLimitTime": "07:30",
+      "exitTime": "14:30",
+      "operationalDays": [
+        1,
+        2,
+        3,
+        4,
+        5
+      ],
+      "isActive": true
+    }
+  ],
+  "presensi": [
+    {
+      "id": "att-demo-1",
+      "tenantId": "sch-smpn1",
+      "date": "2026-10-23",
+      "sessionId": "sch-pagi",
+      "studentId": "std-1",
+      "studentName": "Ahmad Faiz Pratama",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "hadir",
+      "method": "rfid",
+      "recordedAt": "2026-10-23T06:45:00+07:00",
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang",
+      "notes": "Tepat waktu",
+      "history": []
+    },
+    {
+      "id": "att-demo-2",
+      "tenantId": "sch-smpn1",
+      "date": "2026-10-23",
+      "sessionId": "sch-pagi",
+      "studentId": "std-4",
+      "studentName": "Cantika Dewi Maharani",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "terlambat",
+      "method": "barcode",
+      "recordedAt": "2026-10-23T07:12:00+07:00",
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang",
+      "notes": "Terlambat 12 menit",
+      "history": []
+    },
+    {
+      "id": "att-demo-3",
+      "tenantId": "sch-smpn1",
+      "date": "2026-10-23",
+      "sessionId": "sch-pagi",
+      "studentId": "std-2",
+      "studentName": "Annisa Putri Cahyani",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "status": "sakit",
+      "method": "manual",
+      "recordedAt": "2026-10-23T07:20:00+07:00",
+      "recordedByUserId": "usr-admin-1",
+      "recordedByUserName": "Administrator Sekolah",
+      "notes": "Surat dokter terlampir",
+      "history": []
+    }
+  ],
+  "riwayatPresensi": [],
+  "izinKamarMandi": [
+    {
+      "id": "prm-1",
+      "tenantId": "sch-smpn1",
+      "date": "2026-10-23",
+      "studentId": "std-3",
+      "studentName": "Bagas Aditya Nugraha",
+      "classId": "cls-7a",
+      "className": "VII-A",
+      "type": "BAK",
+      "maxMinutes": 5,
+      "timeOut": "2026-10-23T11:58:23.491Z",
+      "timeIn": "2026-10-23T12:03:20.000Z",
+      "actualDurationMinutes": 5,
+      "isReturned": true,
+      "isOverdue": false,
+      "recordedByUserId": "usr-petugas-1",
+      "recordedByUserName": "Petugas Piket Gerbang"
+    }
+  ],
+  "perangkatScan": [
+    {
+      "id": "dev-1",
+      "tenantId": "sch-smpn1",
+      "name": "Scanner Pintu Utama 1",
+      "type": "barcode_rfid",
+      "location": "Gerbang Depan",
+      "isActive": true
+    }
+  ],
+  "databaseWajah": [
+    {
+      "id": "face-1",
+      "tenantId": "sch-smpn1",
+      "personType": "siswa",
+      "personId": "std-1",
+      "personName": "Ahmad Faiz Pratama",
+      "faceEmbedding": "bio_vector_enc_0987162534",
+      "registeredAt": "2026-10-23T12:00:23.491Z",
+      "registeredByUserId": "usr-admin-1"
+    }
+  ],
+  "auditLog": [
+    {
+      "id": "log-1792756827841-2w59u",
+      "tenantId": "sch-smpn1",
+      "timestamp": "2026-10-23T12:00:27.841Z",
+      "action": "LOGIN_SEKOLAH",
+      "module": "Autentikasi",
+      "userId": "system",
+      "userName": "Gerbang Sekolah",
+      "details": "Login berhasil untuk sekolah: SMP Negeri 1 Nusantara"
+    },
+    {
+      "id": "log-1",
+      "tenantId": "sch-smpn1",
+      "timestamp": "2026-10-23T12:00:23.491Z",
+      "action": "SISTEM_INIT",
+      "module": "Sistem",
+      "userId": "system",
+      "userName": "Sistem Otomatis",
+      "details": "Inisialisasi database tenant berhasil."
+    }
+  ],
+  "backupSnapshots": []
+}

@@ -1,0 +1,31 @@
+{
+  "configVersion": 3,
+  "lastSyncTime": "2026-10-28T10:36:02.720Z",
+  "masterSpreadsheetId": "",
+  "masterDriveFolderId": "",
+  "googleDriveConnected": false,
+  "googleSheetsConnected": false,
+  "changeHistory": [
+    {
+      "id": "ch-1793183762720-luk0",
+      "timestamp": "2026-10-28T10:36:02.720Z",
+      "action": "HAPUS_SEKOLAH",
+      "detail": "Sekolah \"SMA 1\" dihapus dari sistem (folder Drive dipindahkan ke Sampah).",
+      "by": "Superadmin"
+    },
+    {
+      "id": "ch-1793183762710-c75g",
+      "timestamp": "2026-10-28T10:36:02.710Z",
+      "action": "TAMBAH_SEKOLAH",
+      "detail": "Sekolah baru ditambahkan: \"SMA 1\" (SMA1)",
+      "by": "Superadmin"
+    },
+    {
+      "id": "ch-init",
+      "timestamp": "2026-10-28T10:36:02.266Z",
+      "action": "INISIALISASI",
+      "detail": "Sistem Master Superadmin diinisialisasi",
+      "by": "System"
+    }
+  ]
+}

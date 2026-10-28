@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4f46e5" />
+      <stop offset="100%" stop-color="#3730a3" />
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.3" />
+    </filter>
+  </defs>
+
+  <!-- Background rounded squircle with safe padding -->
+  <rect width="512" height="512" rx="112" fill="url(#bgGrad)" />
+
+  <!-- Inner subtle circular halo -->
+  <circle cx="256" cy="256" r="190" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="8" />
+
+  <!-- School Shield Emblem -->
+  <g filter="url(#shadow)">
+    <!-- Shield Outline -->
+    <path d="M 256,100 L 370,140 C 370,250 256,330 256,360 C 256,330 142,250 142,140 Z" fill="#ffffff" />
+    <path d="M 256,115 L 354,150 C 354,244 256,314 256,340 C 256,314 158,244 158,150 Z" fill="#e0e7ff" />
+
+    <!-- RFID / Pulse waves inside shield -->
+    <path d="M 220,200 A 45,45 0 0,1 292,200" fill="none" stroke="#4f46e5" stroke-width="8" stroke-linecap="round" />
+    <path d="M 200,180 A 75,75 0 0,1 312,180" fill="none" stroke="#6366f1" stroke-width="8" stroke-linecap="round" />
+
+    <!-- Center Graduation Cap / Checkmark Badge -->
+    <circle cx="256" cy="235" r="32" fill="#4f46e5" />
+    <path d="M 242,235 L 252,245 L 270,225" fill="none" stroke="#ffffff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+  </g>
+
+  <!-- Golden Stars Banner -->
+  <g fill="url(#goldGrad)">
+    <polygon points="256,400 262,414 277,414 265,423 269,437 256,428 243,437 247,423 235,414 250,414" />
+    <polygon points="210,405 214,416 226,416 216,423 220,434 210,427 200,434 204,423 194,416 206,416" transform="scale(0.85) translate(40, 60)" />
+    <polygon points="302,405 306,416 318,416 308,423 312,434 302,427 292,434 296,423 286,416 298,416" transform="scale(0.85) translate(50, 60)" />
+  </g>
+</svg>

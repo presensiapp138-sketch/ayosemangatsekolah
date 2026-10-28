@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Sistem Presensi Sekolah Multi-Tenant</title>
+    <meta name="description" content="Aplikasi presensi sekolah multi-tenant berbasis Google Drive dan Google Sheets dengan login sekolah tanpa email, manajemen hak akses, presensi manual, barcode/RFID, izin kamar mandi, dan rekapitulasi data." />
+    
+    <!-- PWA Theme & Capability -->
+    <meta name="theme-color" content="#4f46e5" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="application-name" content="Presensi" />
+
+    <!-- Apple iOS Safari PWA Meta Tags -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Presensi" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+    <!-- Favicon & Icons -->
+    <link rel="manifest" href="/manifest.json" />
+    <link rel="icon" type="image/svg+xml" href="/icon.svg" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/pwa-192x192.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/pwa-512x512.png" />
+
+    <!-- Social Meta Tags -->
+    <meta property="og:title" content="Sistem Presensi Sekolah Multi-Tenant" />
+    <meta property="og:description" content="Aplikasi presensi sekolah multi-tenant berbasis Google Drive dan Google Sheets dengan login sekolah tanpa email, manajemen hak akses, presensi manual, barcode/RFID, izin kamar mandi, dan rekapitulasi data." />
+    <!-- Vite HMR mock socket & error suppression for AI Studio iframe environment (HMR is disabled) -->
+    <script>
+      (function () {
+        if (typeof window !== 'undefined' && window.WebSocket) {
+          const OrigWebSocket = window.WebSocket;
+          class ViteHmrMockSocket extends EventTarget {
+            static CONNECTING = 0;
+            static OPEN = 1;
+            static CLOSING = 2;
+            static CLOSED = 3;
+            CONNECTING = 0;
+            OPEN = 1;
+            CLOSING = 2;
+            CLOSED = 3;
+            readyState = 1;
+            url = '';
+            protocol = 'vite-hmr';
+            bufferedAmount = 0;
+            extensions = '';
+            binaryType = 'blob';
+            onopen = null;
+            onclose = null;
+            onerror = null;
+            onmessage = null;
+
+            constructor(url, protocols) {
+              super();
+              this.url = typeof url === 'string' ? url : String(url);
+              this.protocol = Array.isArray(protocols) ? protocols[0] : (protocols || 'vite-hmr');
+              queueMicrotask(() => {
+                const openEvent = new Event('open');
+                if (typeof this.onopen === 'function') this.onopen(openEvent);
+                this.dispatchEvent(openEvent);
+              });
+            }
+
+            send(data) {
+              // no-op: HMR disabled in dev proxy environment
+            }
+
+            close(code, reason) {
+              this.readyState = 3;
+              const closeEvent = typeof CloseEvent !== 'undefined'
+                ? new CloseEvent('close', { code: code || 1000, reason: reason || 'Normal Closure', wasClean: true })
+                : new Event('close');
+              if (typeof this.onclose === 'function') this.onclose(closeEvent);
+              this.dispatchEvent(closeEvent);
+            }
+          }
+
+          window.WebSocket = function (url, protocols) {
+            const isHmr = 
+              protocols === 'vite-hmr' ||
+              (Array.isArray(protocols) && protocols.includes('vite-hmr')) ||
+              (typeof url === 'string' && (url.includes('token=') || url.includes(':24678') || url.includes('/@vite')));
+
+            if (isHmr) {
+              return new ViteHmrMockSocket(url, protocols);
+            }
+            return new OrigWebSocket(url, protocols);
+          };
+
+          window.WebSocket.CONNECTING = 0;
+          window.WebSocket.OPEN = 1;
+          window.WebSocket.CLOSING = 2;
+          window.WebSocket.CLOSED = 3;
+          window.WebSocket.prototype = OrigWebSocket.prototype;
+        }
+
+        window.addEventListener('error', function (e) {
+          if (e && (
+            (e.message && (e.message.includes('WebSocket') || e.message.includes('closed without opened'))) ||
+            (e.error && e.error.message && (e.error.message.includes('WebSocket') || e.error.message.includes('closed without opened')))
+          )) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+          }
+        }, true);
+
+        window.addEventListener('unhandledrejection', function (e) {
+          if (e && e.reason && (String(e.reason).includes('WebSocket') || String(e.reason).includes('closed without opened'))) {
+            e.stopImmediatePropagation();
+            e.preventDefault();
+          }
+        }, true);
+      })();
+    </script>
+  </head>
+  <body class="overscroll-none antialiased">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
