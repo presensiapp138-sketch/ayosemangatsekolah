@@ -497,59 +497,15 @@ export function resolveCurrentSession(tenantData: any): {
 // Inisialisasi data default tenant jika belum ada
 function initializeDefaultData() {
   if (!fs.existsSync(TENANTS_FILE)) {
-    const salt1 = generateSalt();
-    const salt2 = generateSalt();
-    const defaultTenants = [
-      {
-        id: 'sch-smpn1',
-        name: 'SMP Negeri 1 Nusantara',
-        code: 'SMPN1',
-        npsn: '20104051',
-        address: 'Jl. Merdeka No. 45, Jakarta Pusat',
-        phone: '021-3456789',
-        salt: salt1,
-        passwordHash: hashPassword('sekolah123', salt1),
-        isActive: true,
-        driveFolderId: '1AbCdEfGhIjKlMnOpQrStUvWxYz',
-        spreadsheetId: '1a2b3c4d5e6f7g8h9i0j-presensi-smpn1',
-        lastSyncTime: getJakartaTime(),
-        syncStatus: 'connected',
-        createdAt: getJakartaTime(),
-      },
-      {
-        id: 'sch-sman2',
-        name: 'SMA Negeri 2 Bangsa',
-        code: 'SMAN2',
-        npsn: '20109922',
-        address: 'Jl. Pemuda Bangsa No. 12, Jakarta Selatan',
-        phone: '021-7890123',
-        salt: salt2,
-        passwordHash: hashPassword('sekolah123', salt2),
-        isActive: true,
-        driveFolderId: '',
-        spreadsheetId: '',
-        lastSyncTime: '',
-        syncStatus: 'disconnected',
-        createdAt: getJakartaTime(),
-      },
-    ];
     try {
-      fs.writeFileSync(TENANTS_FILE, JSON.stringify(defaultTenants, null, 2));
-
-      // Siapkan data internal untuk SMPN 1
-      const smpn1Data = createInitialTenantData('sch-smpn1', 'SMP Negeri 1 Nusantara');
-      fs.writeFileSync(path.resolve(TENANTS_DIR, 'sch-smpn1.json'), JSON.stringify(smpn1Data, null, 2));
-
-      // Siapkan data internal untuk SMAN 2
-      const sman2Data = createInitialTenantData('sch-sman2', 'SMA Negeri 2 Bangsa');
-      fs.writeFileSync(path.resolve(TENANTS_DIR, 'sch-sman2.json'), JSON.stringify(sman2Data, null, 2));
+      fs.writeFileSync(TENANTS_FILE, JSON.stringify([], null, 2));
     } catch (e) {
       console.warn('Gagal menulis data default ke disk, tetap berjalan di memori:', e);
     }
   }
 }
 
-function createInitialTenantData(tenantId: string, schoolName: string) {
+function createInitialTenantData(tenantId: string, schoolName: string, npsn: string = '-') {
   const saltAdmin = generateSalt();
   const saltPetugas = generateSalt();
   const saltWali = generateSalt();
@@ -597,7 +553,7 @@ function createInitialTenantData(tenantId: string, schoolName: string) {
     konfigurasiSekolah: {
       tenantId,
       schoolName,
-      npsn: tenantId === 'sch-smpn1' ? '20104051' : '20109922',
+      npsn: npsn || '-',
       address: 'Jl. Pendidikan Utama Indonesia',
       phone: '021-1234567',
       lateThresholdMinutes: 15,
@@ -754,7 +710,7 @@ function getTenantData(tenantId: string): any {
   if (!fs.existsSync(filePath)) {
     const list = getTenantsList();
     const t = list.find((item: any) => item.id === tenantId);
-    data = createInitialTenantData(tenantId, t ? t.name : 'Sekolah');
+    data = createInitialTenantData(tenantId, t ? t.name : 'Sekolah', t?.npsn || '-');
     fs.writeFileSync(filePath, JSON.stringify(data, null, 2));
     return data;
   }
@@ -4396,7 +4352,7 @@ app.post('/api/superadmin/tenants', requireSuperAdmin, (req: Request, res: Respo
     saveTenantsList(tenants);
 
     // Buat data master awal tenant
-    const tenantInitialData = createInitialTenantData(id, name);
+    const tenantInitialData = createInitialTenantData(id, name, npsn);
     if (cleanEmail && tenantInitialData.pengguna && tenantInitialData.pengguna[0]) {
       tenantInitialData.pengguna[0].email = cleanEmail;
     }

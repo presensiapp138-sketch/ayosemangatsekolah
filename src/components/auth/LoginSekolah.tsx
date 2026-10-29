@@ -314,6 +314,28 @@ export const LoginSekolah: React.FC<LoginSekolahProps> = ({ onLoginSuccess, onOp
               </span>
             </div>
 
+            {schools.length === 0 && !isLoading && (
+              <div className="mb-5 p-4 rounded-xl bg-amber-50 border border-amber-300 text-amber-900 text-xs sm:text-sm flex flex-col gap-2">
+                <div className="flex items-center gap-2 font-bold text-amber-950">
+                  <School className="w-4 h-4 text-amber-700" />
+                  <span>Belum Ada Sekolah Terdaftar</span>
+                </div>
+                <p className="text-amber-800 leading-relaxed">
+                  Database masih kosong (tidak ada akun sekolah demo). Untuk mendaftarkan sekolah resmi pertama Anda, silakan buka menu <strong>Akses Superadmin</strong>.
+                </p>
+                <div>
+                  <button
+                    type="button"
+                    onClick={onOpenSuperAdmin}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs transition cursor-pointer"
+                  >
+                    <Shield className="w-3.5 h-3.5" />
+                    Buka Akses Superadmin
+                  </button>
+                </div>
+              </div>
+            )}
+
             {errorMessage && (
               <div className="mb-5 p-3.5 rounded-xl bg-rose-50 border border-rose-300 text-rose-800 text-xs sm:text-sm flex items-start gap-2.5">
                 <ShieldAlert className="w-4 h-4 text-rose-600 shrink-0 mt-0.5" />
@@ -425,41 +447,10 @@ export const LoginSekolah: React.FC<LoginSekolahProps> = ({ onLoginSuccess, onOp
                     type={showSchoolPassword ? 'text' : 'password'}
                     value={schoolPassword}
                     onChange={(e) => setSchoolPassword(e.target.value)}
-                    placeholder="Masukkan sandi sekolah (default: sekolah123)..."
+                    placeholder="Masukkan sandi sekolah..."
                     className="w-full pl-10 pr-10 py-2.5 bg-white border border-slate-300 rounded-xl text-sm text-slate-900 placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-600 focus:border-transparent transition"
                     disabled={isLoading}
                   />
-                </div>
-              </div>
-
-              {/* Demo Quick Chips */}
-              <div className="pt-1">
-                <span className="text-[11px] text-slate-600 block mb-1.5 font-semibold">
-                  Klik Cepat Demo (Sandi: sekolah123):
-                </span>
-                <div className="flex flex-wrap gap-2">
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSchoolQuery('SMP Negeri 1 Nusantara');
-                      setSchoolPassword('sekolah123');
-                      setShowDropdown(false);
-                    }}
-                    className="text-xs px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-slate-100 text-indigo-700 border border-slate-200 transition font-medium cursor-pointer"
-                  >
-                    SMPN 1 Nusantara
-                  </button>
-                  <button
-                    type="button"
-                    onClick={() => {
-                      setSchoolQuery('SMA Negeri 2 Bangsa');
-                      setSchoolPassword('sekolah123');
-                      setShowDropdown(false);
-                    }}
-                    className="text-xs px-2.5 py-1 rounded-lg bg-slate-50 hover:bg-slate-100 text-indigo-700 border border-slate-200 transition font-medium cursor-pointer"
-                  >
-                    SMAN 2 Bangsa
-                  </button>
                 </div>
               </div>
 

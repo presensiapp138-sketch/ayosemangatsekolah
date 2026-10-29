@@ -63,220 +63,39 @@ function getNowJakarta(): string {
 }
 
 function initDefaultState(): LocalDBState {
-  const today = getTodayJakarta();
-
-  const smpn1Classes: SchoolClass[] = [
-    { id: 'cls-7a', tenantId: 'sch-smpn1', academicYearId: 'ay-1', programId: 'prog-tahfidz', programName: 'Program Tahfidz & Keagamaan', name: 'VII-A', grade: 7, waliKelasId: 'usr-wali-1', waliKelasName: 'Budi Santoso, S.Pd.', waliKelasPassword: 'wali123', isActive: true },
-    { id: 'cls-7b', tenantId: 'sch-smpn1', academicYearId: 'ay-1', programId: 'prog-reguler', programName: 'Reguler Umum', name: 'VII-B', grade: 7, waliKelasId: 'tch-2', waliKelasName: 'Siti Rahmawati, M.Pd.', waliKelasPassword: 'wali123', isActive: true },
-    { id: 'cls-8a', tenantId: 'sch-smpn1', academicYearId: 'ay-1', programId: 'prog-mipa', programName: 'Peminatan MIPA / Sains', name: 'VIII-A', grade: 8, waliKelasId: 'tch-3', waliKelasName: 'Drs. Hendro Wibowo', waliKelasPassword: 'wali123', isActive: true },
-    { id: 'cls-9a', tenantId: 'sch-smpn1', academicYearId: 'ay-1', programId: 'prog-reguler', programName: 'Reguler Umum', name: 'IX-A', grade: 9, waliKelasId: '', waliKelasName: '', waliKelasPassword: 'wali123', isActive: true },
-  ];
-
-  const smpn1Students: Student[] = [
-    { id: 'std-1', tenantId: 'sch-smpn1', nis: '26001', nisn: '0081234001', fullName: 'Ahmad Faiz Pratama', gender: 'L', classId: 'cls-7a', className: 'VII-A', academicYearId: 'ay-1', barcodeRfidCode: '2735219638', isActive: true },
-    { id: 'std-2', tenantId: 'sch-smpn1', nis: '26002', nisn: '0081234002', fullName: 'Annisa Putri Cahyani', gender: 'P', classId: 'cls-7a', className: 'VII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7A-02', isActive: true },
-    { id: 'std-3', tenantId: 'sch-smpn1', nis: '26003', nisn: '0081234003', fullName: 'Bagas Aditya Nugraha', gender: 'L', classId: 'cls-7a', className: 'VII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7A-03', isActive: true },
-    { id: 'std-4', tenantId: 'sch-smpn1', nis: '26004', nisn: '0081234004', fullName: 'Cantika Dewi Maharani', gender: 'P', classId: 'cls-7a', className: 'VII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7A-04', isActive: true },
-    { id: 'std-5', tenantId: 'sch-smpn1', nis: '26005', nisn: '0081234005', fullName: 'Daffa Rizky Ramadhan', gender: 'L', classId: 'cls-7a', className: 'VII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7A-05', isActive: true },
-    { id: 'std-6', tenantId: 'sch-smpn1', nis: '26006', nisn: '0081234006', fullName: 'Elisa Permata Sari', gender: 'P', classId: 'cls-7b', className: 'VII-B', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7B-01', isActive: true },
-    { id: 'std-7', tenantId: 'sch-smpn1', nis: '26007', nisn: '0081234007', fullName: 'Fajar Hidayatullah', gender: 'L', classId: 'cls-7b', className: 'VII-B', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-7B-02', isActive: true },
-    { id: 'std-8', tenantId: 'sch-smpn1', nis: '26008', nisn: '0081234008', fullName: 'Gita Larasati', gender: 'P', classId: 'cls-8a', className: 'VIII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-8A-01', isActive: true },
-    { id: 'std-9', tenantId: 'sch-smpn1', nis: '26009', nisn: '0081234009', fullName: 'Hendra Gunawan', gender: 'L', classId: 'cls-8a', className: 'VIII-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-8A-02', isActive: true },
-    { id: 'std-10', tenantId: 'sch-smpn1', nis: '26010', nisn: '0081234010', fullName: 'Indah Kusumawardani', gender: 'P', classId: 'cls-9a', className: 'IX-A', academicYearId: 'ay-1', barcodeRfidCode: 'CARD-9A-01', isActive: true },
-  ];
-
-  const smpn1Schedules: AttendanceSchedule[] = [
-    {
-      id: 'sch-pagi',
-      tenantId: 'sch-smpn1',
-      sessionName: 'Pagi',
-      entryStartTime: '06:30',
-      entryLimitTime: '07:00',
-      lateLimitTime: '07:30',
-      exitTime: '12:30',
-      transitionTime: '12:30',
-      operationalDays: [1, 2, 3, 4, 5],
-      isActive: true,
-    },
-    {
-      id: 'sch-siang',
-      tenantId: 'sch-smpn1',
-      sessionName: 'Siang',
-      entryStartTime: '12:30',
-      entryLimitTime: '13:00',
-      lateLimitTime: '13:30',
-      exitTime: '17:30',
-      transitionTime: '17:30',
-      operationalDays: [1, 2, 3, 4, 5],
-      isActive: true,
-    },
-  ];
-
-  const smpn1Programs: SchoolProgram[] = [
-    { id: 'prog-reguler', tenantId: 'sch-smpn1', name: 'Reguler Umum', code: 'REG', description: 'Kurikulum Nasional Reguler', isActive: true },
-    { id: 'prog-tahfidz', tenantId: 'sch-smpn1', name: 'Program Tahfidz & Keagamaan', code: 'TFZ', description: 'Program Khusus Tahfidz Al-Quran', isActive: true },
-    { id: 'prog-mipa', tenantId: 'sch-smpn1', name: 'Peminatan MIPA / Sains', code: 'MIPA', description: 'Matematika dan Ilmu Pengetahuan Alam', isActive: true },
-  ];
-
-  const smpn1Presensi: AttendanceRecord[] = [
-    {
-      id: 'att-local-1',
-      tenantId: 'sch-smpn1',
-      date: today,
-      sessionId: 'sch-pagi',
-      studentId: 'std-1',
-      studentName: 'Ahmad Faiz Pratama',
-      classId: 'cls-7a',
-      className: 'VII-A',
-      status: 'hadir',
-      method: 'rfid',
-      recordedAt: `${today}T06:45:00+07:00`,
-      recordedByUserId: 'usr-petugas-1',
-      recordedByUserName: 'Petugas Piket Gerbang',
-      notes: 'Tepat waktu',
-    },
-    {
-      id: 'att-local-2',
-      tenantId: 'sch-smpn1',
-      date: today,
-      sessionId: 'sch-pagi',
-      studentId: 'std-4',
-      studentName: 'Cantika Dewi Maharani',
-      classId: 'cls-7a',
-      className: 'VII-A',
-      status: 'terlambat',
-      method: 'barcode',
-      recordedAt: `${today}T07:12:00+07:00`,
-      recordedByUserId: 'usr-petugas-1',
-      recordedByUserName: 'Petugas Piket Gerbang',
-      notes: 'Terlambat 12 menit',
-    },
-  ];
-
-  const smpn1Bathroom: BathroomPermit[] = [
-    {
-      id: 'prm-local-1',
-      tenantId: 'sch-smpn1',
-      date: today,
-      studentId: 'std-3',
-      studentName: 'Bagas Aditya Nugraha',
-      classId: 'cls-7a',
-      className: 'VII-A',
-      type: 'BAK',
-      maxMinutes: 5,
-      timeOut: new Date(Date.now() - 2 * 60 * 1000).toISOString(),
-      isReturned: false,
-      isOverdue: false,
-      recordedByUserId: 'usr-petugas-1',
-      recordedByUserName: 'Petugas Piket Gerbang',
-    },
-  ];
-
-  const smpn1Users: InternalUser[] = [
-    { id: 'usr-admin-1', tenantId: 'sch-smpn1', username: 'admin', fullName: 'Administrator Sekolah', role: 'admin', email: 'admin@sekolah.id', isActive: true, createdAt: getNowJakarta() },
-    { id: 'usr-petugas-1', tenantId: 'sch-smpn1', username: 'petugas1', fullName: 'Petugas Piket Gerbang', role: 'petugas', email: 'petugas@sekolah.id', isActive: true, createdAt: getNowJakarta() },
-    { id: 'usr-wali-1', tenantId: 'sch-smpn1', username: 'walikelas7a', fullName: 'Budi Santoso, S.Pd.', role: 'wali_kelas', assignedClassId: 'cls-7a', email: 'budi@sekolah.id', isActive: true, createdAt: getNowJakarta() },
-    { id: 'usr-kesiswaan-1', tenantId: 'sch-smpn1', username: 'kesiswaan', fullName: 'Siti Rahmawati, M.Pd.', role: 'kesiswaan', email: 'kesiswaan@sekolah.id', isActive: true, createdAt: getNowJakarta() },
-    { id: 'usr-kepsek-1', tenantId: 'sch-smpn1', username: 'kepsek', fullName: 'Drs. Hendro Wibowo, M.M.', role: 'kepala_sekolah', email: 'kepsek@sekolah.id', isActive: true, createdAt: getNowJakarta() },
-  ];
-
   return {
     superadminEmail: 'presensiapp138@gmail.com',
     superadminPassword: 'superadmin123',
-    tenants: [
-      {
-        id: 'sch-smpn1',
-        name: 'SMP Negeri 1 Nusantara',
-        code: 'SMPN1',
-        npsn: '20104051',
-        email: 'admin.smpn1@sekolah.sch.id',
-        databaseEmail: 'presensiapp138@gmail.com',
-        address: 'Jl. Merdeka No. 45, Jakarta Pusat',
-        phone: '021-3456789',
-        password: 'sekolah123',
-        isActive: true,
-        driveFolderId: '1AbCdEfGhIjKlMnOpQrStUvWxYz',
-        spreadsheetId: '1a2b3c4d5e6f7g8h9i0j-presensi-smpn1',
-        lastSyncTime: getNowJakarta(),
-        syncStatus: 'connected',
-        createdAt: getNowJakarta(),
-        rolePasswords: {
-          admin: 'admin123',
-          kesiswaan: 'kesiswaan123',
-          kepala_sekolah: 'kepsek123',
-          defaultWaliKelas: 'wali123',
-        },
-      },
-      {
-        id: 'sch-sman2',
-        name: 'SMA Negeri 2 Bangsa',
-        code: 'SMAN2',
-        npsn: '20109922',
-        address: 'Jl. Pemuda Bangsa No. 12, Jakarta Selatan',
-        phone: '021-7890123',
-        password: 'sekolah123',
-        isActive: true,
-        driveFolderId: '',
-        spreadsheetId: '',
-        lastSyncTime: '',
-        syncStatus: 'disconnected',
-        createdAt: getNowJakarta(),
-        rolePasswords: {
-          admin: 'admin123',
-          kesiswaan: 'kesiswaan123',
-          kepala_sekolah: 'kepsek123',
-          defaultWaliKelas: 'wali123',
-        },
-      },
-    ],
-    tenantData: {
-      'sch-smpn1': {
-        students: smpn1Students,
-        classes: smpn1Classes,
-        programs: smpn1Programs,
-        schedules: smpn1Schedules,
-        presensi: smpn1Presensi,
-        bathroomPermits: smpn1Bathroom,
-        auditLogs: [
-          {
-            id: 'log-local-1',
-            tenantId: 'sch-smpn1',
-            timestamp: getNowJakarta(),
-            action: 'SISTEM_INIT',
-            module: 'Sistem',
-            userId: 'system',
-            userName: 'Sistem Otomatis',
-            details: 'Inisialisasi database lokal sekolah siap digunakan.',
-          },
-        ],
-        users: smpn1Users,
-        backups: [],
-        driveConfig: {
-          driveFolderId: '1AbCdEfGhIjKlMnOpQrStUvWxYz',
-          spreadsheetId: '1a2b3c4d5e6f7g8h9i0j-presensi-smpn1',
-          syncStatus: 'connected',
-          lastSyncTime: getNowJakarta(),
-        },
-      },
-      'sch-sman2': {
-        students: [],
-        classes: [],
-        programs: [],
-        schedules: smpn1Schedules,
-        presensi: [],
-        bathroomPermits: [],
-        auditLogs: [],
-        users: smpn1Users,
-        backups: [],
-        driveConfig: {
-          driveFolderId: '',
-          spreadsheetId: '',
-          syncStatus: 'disconnected',
-          lastSyncTime: '',
-        },
-      },
-    },
+    tenants: [],
+    tenantData: {},
     sessions: {},
+  };
+}
+
+function getTenantData(db: LocalDBState, tenantId?: string) {
+  if (tenantId && db.tenantData && db.tenantData[tenantId]) {
+    return db.tenantData[tenantId];
+  }
+  const firstId = db.tenants && db.tenants[0]?.id;
+  if (firstId && db.tenantData && db.tenantData[firstId]) {
+    return db.tenantData[firstId];
+  }
+  return {
+    students: [],
+    classes: [],
+    programs: [],
+    schedules: [],
+    presensi: [],
+    bathroomPermits: [],
+    auditLogs: [],
+    users: [],
+    backups: [],
+    driveConfig: {
+      driveFolderId: '',
+      spreadsheetId: '',
+      syncStatus: 'disconnected',
+      lastSyncTime: '',
+    },
   };
 }
 
@@ -285,7 +104,16 @@ function loadLocalDB(): LocalDBState {
     const raw = localStorage.getItem(STORAGE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
-      if (parsed && parsed.tenants && parsed.tenants.length > 0) {
+      if (parsed && typeof parsed === 'object') {
+        if (Array.isArray(parsed.tenants)) {
+          parsed.tenants = parsed.tenants.filter(
+            (t: any) => t.id !== 'sch-smpn1' && t.id !== 'sch-sman2'
+          );
+        }
+        if (parsed.tenantData) {
+          delete parsed.tenantData['sch-smpn1'];
+          delete parsed.tenantData['sch-sman2'];
+        }
         return parsed;
       }
     }
@@ -321,7 +149,7 @@ export async function handleLocalFallbackRequest(
   // Token active
   const token = localStorage.getItem(SESSION_TOKEN_KEY);
   const currentSession = token ? db.sessions[token] : null;
-  const activeTenantId = currentSession ? currentSession.tenantId : 'sch-smpn1';
+  const activeTenantId = currentSession ? currentSession.tenantId : (db.tenants[0]?.id || '');
 
   // Helper simpan audit
   const addLocalAudit = (tenantId: string, action: string, module: string, details: string) => {
@@ -491,7 +319,7 @@ export async function handleLocalFallbackRequest(
   // 4. POST /api/auth/select-role
   if (pathOnly === '/api/auth/select-role' && method === 'POST') {
     const { role, name, classId, password, username } = body;
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const activeTenant = db.tenants.find((t) => t.id === activeTenantId) || db.tenants[0];
     const rolePasswords = activeTenant.rolePasswords || {
       admin: 'admin123',
@@ -610,12 +438,12 @@ export async function handleLocalFallbackRequest(
 
   // 5. GET /api/auth/me
   if (pathOnly === '/api/auth/me' && method === 'GET') {
-    const t = db.tenants.find((item) => item.id === activeTenantId) || db.tenants[0];
-    const tData = db.tenantData[t.id] || db.tenantData['sch-smpn1'];
+    const t = db.tenants.find((item) => item.id === activeTenantId) || db.tenants[0] || null;
+    const tData = getTenantData(db, t?.id);
     return {
       success: true,
       tenant: t,
-      user: currentSession?.user || tData.users[0],
+      user: currentSession?.user || tData.users[0] || null,
       availableInternalUsers: tData.users,
     };
   }
@@ -629,7 +457,7 @@ export async function handleLocalFallbackRequest(
 
   // 7. GET /api/dashboard/stats
   if (pathOnly === '/api/dashboard/stats' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const targetDate = queryParams.get('date') || getTodayJakarta();
     const targetSessionId = queryParams.get('sessionId') || '';
 
@@ -719,7 +547,7 @@ export async function handleLocalFallbackRequest(
 
   // 8. GET /api/master-data
   if (pathOnly === '/api/master-data' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     return {
       success: true,
       classes: tData.classes || [],
@@ -732,7 +560,7 @@ export async function handleLocalFallbackRequest(
 
   // 8.B GET /api/presensi/current-session
   if (pathOnly === '/api/presensi/current-session') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const schedules = tData.schedules || [];
     const now = new Date();
     const timeStr = `${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}`;
@@ -751,7 +579,7 @@ export async function handleLocalFallbackRequest(
 
   // 8.C GET /api/discipline/rankings
   if (pathOnly === '/api/discipline/rankings') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const students = tData.students || [];
     const presensi = tData.presensi || [];
     const rankings = students.map((std, idx) => {
@@ -838,7 +666,7 @@ export async function handleLocalFallbackRequest(
 
   // 9. GET & POST /api/presensi
   if (pathOnly === '/api/presensi') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     if (method === 'GET') {
       const date = queryParams.get('date');
       const startDate = queryParams.get('startDate');
@@ -938,7 +766,7 @@ export async function handleLocalFallbackRequest(
 
   // 10. IZIN KAMAR MANDI
   if (pathOnly === '/api/izin-kamar-mandi/active' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     return {
       success: true,
       permits: (tData.bathroomPermits || []).filter((p) => !p.isReturned),
@@ -946,7 +774,7 @@ export async function handleLocalFallbackRequest(
   }
 
   if (pathOnly === '/api/izin-kamar-mandi/history' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const date = queryParams.get('date') || getTodayJakarta();
     const classId = queryParams.get('classId');
     let list = (tData.bathroomPermits || []).filter((p) => p.date === date);
@@ -955,7 +783,7 @@ export async function handleLocalFallbackRequest(
   }
 
   if (pathOnly === '/api/izin-kamar-mandi' && method === 'POST') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const { studentId, type } = body;
     const std = tData.students.find((s) => s.id === studentId);
     if (!std) throw new Error('Siswa tidak ditemukan.');
@@ -985,7 +813,7 @@ export async function handleLocalFallbackRequest(
   if (pathOnly.startsWith('/api/izin-kamar-mandi/') && pathOnly.endsWith('/return') && method === 'POST') {
     const parts = pathOnly.split('/');
     const permitId = parts[3];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const p = tData.bathroomPermits.find((item) => item.id === permitId);
     if (p) {
       p.isReturned = true;
@@ -997,7 +825,7 @@ export async function handleLocalFallbackRequest(
 
   // 11. ADMIN CRUD SISWA
   if (pathOnly === '/api/admin/students' && method === 'POST') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const cls = tData.classes.find((c) => c.id === body.classId);
     const newStudent: Student = {
       id: `std-${Date.now()}`,
@@ -1020,7 +848,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/students/') && method === 'PUT') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const s = tData.students.find((item) => item.id === id);
     if (s) {
       Object.assign(s, body);
@@ -1035,7 +863,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/students/') && method === 'DELETE') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     tData.students = tData.students.filter((item) => item.id !== id);
     saveLocalDB(db);
     return { success: true, message: 'Siswa berhasil dihapus.' };
@@ -1043,7 +871,7 @@ export async function handleLocalFallbackRequest(
 
   // 12. ADMIN CRUD KELAS
   if (pathOnly === '/api/admin/classes' && method === 'POST') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const newClass: SchoolClass = {
       id: `cls-${Date.now()}`,
       tenantId: activeTenantId,
@@ -1062,7 +890,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/classes/') && method === 'PUT') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const c = tData.classes.find((item) => item.id === id);
     if (c) {
       Object.assign(c, body);
@@ -1073,7 +901,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/classes/') && method === 'DELETE') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     tData.classes = tData.classes.filter((item) => item.id !== id);
     saveLocalDB(db);
     return { success: true, message: 'Kelas berhasil dihapus.' };
@@ -1081,7 +909,7 @@ export async function handleLocalFallbackRequest(
 
   // 13. ADMIN CRUD SESI
   if (pathOnly === '/api/admin/sessions' && method === 'POST') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const newSession: AttendanceSchedule = {
       id: `sch-${Date.now()}`,
       tenantId: activeTenantId,
@@ -1101,7 +929,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/sessions/') && method === 'PUT') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const s = tData.schedules.find((item) => item.id === id);
     if (s) {
       Object.assign(s, body);
@@ -1112,7 +940,7 @@ export async function handleLocalFallbackRequest(
 
   if (pathOnly.startsWith('/api/admin/sessions/') && method === 'DELETE') {
     const id = pathOnly.split('/')[4];
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     tData.schedules = tData.schedules.filter((item) => item.id !== id);
     saveLocalDB(db);
     return { success: true, message: 'Sesi berhasil dihapus.' };
@@ -1146,7 +974,7 @@ export async function handleLocalFallbackRequest(
 
   // 15. AUDIT LOGS
   if (pathOnly === '/api/admin/audit-logs' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     return { success: true, auditLogs: tData.auditLogs || [] };
   }
 
@@ -1186,7 +1014,7 @@ export async function handleLocalFallbackRequest(
 
   // 17. BACKUP & RESTORE
   if (pathOnly === '/api/backup/create' && method === 'POST') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     const backupItem = {
       id: `bk-${Date.now()}`,
       name: `Cadangan_Otomatis_${getTodayJakarta()}`,
@@ -1202,7 +1030,7 @@ export async function handleLocalFallbackRequest(
   }
 
   if (pathOnly === '/api/backup/list' && method === 'GET') {
-    const tData = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData = getTenantData(db, activeTenantId);
     return { success: true, backups: tData.backups || [] };
   }
 
@@ -1345,7 +1173,7 @@ export async function handleLocalFallbackRequest(
 
   // PERATURAN SEKOLAH (TERISOLASI PER TENANT)
   if (pathOnly === '/api/admin/rules') {
-    const tData: any = db.tenantData[activeTenantId] || db.tenantData['sch-smpn1'];
+    const tData: any = getTenantData(db, activeTenantId);
     if (method === 'GET') {
       return {
         success: true,

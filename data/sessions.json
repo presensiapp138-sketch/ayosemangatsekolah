@@ -1,10 +1,5 @@
 [
   {
-    "token": "sess-d8c58d0ac95093736537f040a9177820669502787f851f7d",
-    "tenantId": "sch-smpn1",
-    "createdAt": 1792817313055
-  },
-  {
     "token": "super-80c13e2a5fce12b410e828da9e3e18ec308fd5dea5eeb0c4",
     "tenantId": "global",
     "isSuperAdmin": true,
@@ -26,14 +21,6 @@
     "userRole": "superadmin",
     "email": "presensiapp138@gmail.com",
     "createdAt": 1793183105236
-  },
-  {
-    "token": "sess-26a1034754240bb33359f97cfaaffef305458b9077fe43e1",
-    "tenantId": "sch-smpn1",
-    "createdAt": 1793183187180,
-    "userId": "usr-petugas-temp-1793183191930",
-    "userName": "Petugas Piket",
-    "userRole": "petugas"
   },
   {
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic3VwZXJhZG1pbiIsImVtYWlsIjoicHJlc2Vuc2lhcHAxMzhAZ21haWwuY29tIiwiaXNzIjoicHJlc2Vuc2ktbWFzdGVyLXN5c3RlbSIsImlhdCI6MTc5MzE4Mzc2MiwiZXhwIjoxNzkzMjEyNTYyfQ.xFDp0pJWTEbSL-8wtWtatL4ybfgdVoXzXV5f9n3LJrk",
