@@ -12,7 +12,17 @@ import {
   User,
   signOut,
 } from 'firebase/auth';
-import firebaseConfig from '../../firebase-applet-config.json';
+import defaultFirebaseConfig from '../../firebase-applet-config.json';
+
+// Konfigurasi dinamis mengutamakan Environment Variables berawalan VITE_
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY || (defaultFirebaseConfig as any).apiKey || '',
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN || (defaultFirebaseConfig as any).authDomain || '',
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID || (defaultFirebaseConfig as any).projectId || '',
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET || (defaultFirebaseConfig as any).storageBucket || '',
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID || (defaultFirebaseConfig as any).messagingSenderId || '',
+  appId: import.meta.env.VITE_FIREBASE_APP_ID || (defaultFirebaseConfig as any).appId || '',
+};
 
 const app = getApps().length > 0 ? getApp() : initializeApp(firebaseConfig);
 export const auth = getAuth(app);

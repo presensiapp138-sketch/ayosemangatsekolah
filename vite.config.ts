@@ -75,6 +75,9 @@ export default defineConfig(() => {
         '@': path.resolve(process.cwd(), '.'),
       },
     },
+    build: {
+      outDir: 'dist',
+    },
     server: {
       // HMR is disabled in AI Studio
       hmr: false,
