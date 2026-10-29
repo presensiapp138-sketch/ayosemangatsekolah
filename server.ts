@@ -1582,8 +1582,9 @@ app.post('/api/superadmin/sync-master-sheet', requireSuperAdmin, async (req: Req
     }
 
     const spreadsheetId = req.body.spreadsheetId || master.masterSpreadsheetId;
+    const isRealGoogleToken = Boolean(accessToken && typeof accessToken === 'string' && accessToken.startsWith('ya29.'));
 
-    if (accessToken && spreadsheetId) {
+    if (isRealGoogleToken && spreadsheetId) {
       // Kirim pemetaan seluruh tenant ke tab "MasterTenants" di Sheet Master
       try {
         const rows = [
@@ -1699,7 +1700,9 @@ app.post('/api/superadmin/auto-create-master-database', requireSuperAdmin, async
     let createdFolderId = '';
     let createdSpreadsheetId = '';
 
-    if (!accessToken) {
+    const isRealGoogleToken = Boolean(accessToken && typeof accessToken === 'string' && accessToken.startsWith('ya29.'));
+
+    if (!isRealGoogleToken) {
       // Dibuat otomatis melalui database engine master terkelola sistem
       createdFolderId = `1Drive_Master_${Date.now()}`;
       createdSpreadsheetId = `1Sheet_Master_${Date.now()}`;
@@ -4587,8 +4590,10 @@ app.post('/api/superadmin/tenants/:id/auto-create-database', async (req: Request
     const target = tenants.find((t: any) => t.id === id);
     if (!target) return res.status(404).json({ success: false, error: 'Sekolah tidak ditemukan.' });
 
+    const isRealGoogleToken = Boolean(accessToken && typeof accessToken === 'string' && accessToken.startsWith('ya29.'));
+
     // Jika ada token OAuth aktif dari user, buat folder Drive dan Spreadsheet riil di Google Workspace
-    if (accessToken) {
+    if (isRealGoogleToken) {
       try {
         // 1. Buat Folder Drive
         const folderRes = await fetch('https://www.googleapis.com/drive/v3/files', {

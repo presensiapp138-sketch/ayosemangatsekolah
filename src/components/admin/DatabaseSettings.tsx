@@ -15,7 +15,7 @@ import {
   LogOut,
 } from 'lucide-react';
 import { api } from '../../services/api';
-import { googleSignIn, googleSignOut, getAccessToken, auth } from '../../services/googleAuth';
+import { googleSignIn, googleSignOut, getAccessToken, initAuth } from '../../services/googleAuth';
 import { TenantSchool } from '../../types';
 
 interface DatabaseSettingsProps {
@@ -56,15 +56,19 @@ export const DatabaseSettings: React.FC<DatabaseSettingsProps> = ({ tenant, onTe
   ]);
 
   useEffect(() => {
-    const unsub = auth.onAuthStateChanged((user) => {
-      setGoogleUser(user);
-    });
+    const unsub = initAuth(
+      (user) => setGoogleUser(user),
+      () => setGoogleUser(null)
+    );
     return () => unsub();
   }, []);
 
   const handleConnectGoogle = async () => {
     try {
-      const res = await googleSignIn();
+      const res = await googleSignIn({
+        targetEmail: tenant.email || `${tenant.code.toLowerCase()}@sekolah.sch.id`,
+        displayName: tenant.name || 'Admin Sekolah',
+      });
       if (res && res.user) {
         setGoogleUser(res.user);
         setFeedback({
