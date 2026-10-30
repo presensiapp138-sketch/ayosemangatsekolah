@@ -27,5 +27,18 @@
       "detail": "Sistem Master Superadmin diinisialisasi",
       "by": "System"
     }
-  ]
+  ],
+  "globalRules": {
+    "toleransiKeterlambatanMenit": 15,
+    "jamMasukMaksimal": "07:00",
+    "jamPulang": "14:30",
+    "izinKamarMandiMaksimalMenit": 10,
+    "maksimalIzinPerHari": 2,
+    "maksimalIzinSerentakPerKelas": 2,
+    "kebijakanUmum": "Peraturan Kedisiplinan & Presensi Terpadu Multi-Sekolah",
+    "pesanPengumuman": "",
+    "allowSundayAttendance": false,
+    "updatedAt": "2026-10-30T07:29:59.897Z",
+    "updatedBy": "Superadmin"
+  }
 }

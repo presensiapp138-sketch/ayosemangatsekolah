@@ -47,6 +47,11 @@ async function request(endpoint: string, options: RequestInit = {}) {
     headers.set('Authorization', `Bearer ${token}`);
   }
 
+  const googleToken = localStorage.getItem('presensi_google_access_token');
+  if (googleToken && !headers.has('x-google-access-token')) {
+    headers.set('x-google-access-token', googleToken);
+  }
+
   try {
     const response = await fetch(endpoint, {
       credentials: 'include',
@@ -111,11 +116,16 @@ export const api = {
       method: 'POST',
       body: JSON.stringify({ username, pin, password }),
     }),
-  selectRole: (payload: { role: string; name?: string; classId?: string; password?: string; username?: string }) =>
-    request('/api/auth/select-role', {
+  selectRole: async (payload: { role: string; name?: string; classId?: string; password?: string; username?: string }) => {
+    const res = await request('/api/auth/select-role', {
       method: 'POST',
       body: JSON.stringify(payload),
-    }),
+    });
+    if (res && res.success && res.token) {
+      setSessionToken(res.token);
+    }
+    return res;
+  },
   getRolePasswords: () => request('/api/admin/role-passwords'),
   updateRolePasswords: (payload: { admin?: string; kesiswaan?: string; kepala_sekolah?: string; defaultWaliKelas?: string }) =>
     request('/api/admin/role-passwords', {
