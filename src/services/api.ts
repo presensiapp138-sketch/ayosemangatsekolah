@@ -1,10 +1,18 @@
 /**
  * Layanan API Frontend untuk Sistem Presensi Sekolah Multi-Tenant
+ * Menggunakan Supabase sebagai pusat data multi-perangkat
  */
-import { handleLocalFallbackRequest } from './localFallbackDB';
 
 const SESSION_TOKEN_KEY = 'school_attendance_session_token';
 const SUPER_TOKEN_KEY = 'school_superadmin_session_token';
+
+// Bersihkan cache legacy jika pernah tersimpan di browser
+try {
+  localStorage.removeItem('school_attendance_offline_db_v1');
+  localStorage.removeItem('presensi_google_access_token');
+} catch (e) {
+  // ignore
+}
 
 export const getSessionToken = (): string | null => {
   return localStorage.getItem(SESSION_TOKEN_KEY);
@@ -39,7 +47,7 @@ async function request(endpoint: string, options: RequestInit = {}) {
     headers.set('Content-Type', 'application/json');
   }
 
-  if (endpoint.startsWith('/api/superadmin/')) {
+  if (endpoint.startsWith('/api/superadmin/') || endpoint.startsWith('/api/schools')) {
     if (superToken && !headers.has('Authorization')) {
       headers.set('Authorization', `Bearer ${superToken}`);
     }
@@ -47,60 +55,87 @@ async function request(endpoint: string, options: RequestInit = {}) {
     headers.set('Authorization', `Bearer ${token}`);
   }
 
-  const googleToken = localStorage.getItem('presensi_google_access_token');
-  if (googleToken && !headers.has('x-google-access-token')) {
-    headers.set('x-google-access-token', googleToken);
+  const response = await fetch(endpoint, {
+    credentials: 'include',
+    ...options,
+    headers,
+  });
+
+  const contentType = response.headers.get('content-type') || '';
+  const isJson = contentType.includes('application/json');
+  const data = isJson ? await response.json().catch(() => ({})) : {};
+
+  if (!response.ok) {
+    const errorMsg = data.error || data.message || `Gagal terhubung ke server (HTTP ${response.status})`;
+    const err: any = new Error(errorMsg);
+    err.data = data;
+    err.status = response.status;
+    throw err;
   }
 
-  try {
-    const response = await fetch(endpoint, {
-      credentials: 'include',
-      ...options,
-      headers,
-    });
-
-    const contentType = response.headers.get('content-type') || '';
-    const isJson = contentType.includes('application/json');
-
-    // Jika server mengembalikan 404/405 atau mengembalikan halaman HTML (Vercel SPA rewrite saat API serverless belum dikonfigurasi),
-    // aktifkan engine fallback lokal agar aplikasi tidak pernah error!
-    if ((response.status === 404 || response.status === 405 || !isJson) && endpoint.startsWith('/api/')) {
-      return await handleLocalFallbackRequest(endpoint, options);
-    }
-
-    const data = await response.json().catch(() => ({}));
-
-    if (!response.ok) {
-      const errorMsg = data.error || data.message || `Terjadi kesalahan pada server (HTTP ${response.status})`;
-      const err: any = new Error(errorMsg);
-      err.data = data;
-      err.status = response.status;
-      throw err;
-    }
-
-    return data;
-  } catch (networkOrServerError: any) {
-    // Jika koneksi gagal (misal server mati, offline, atau backend tidak tersedia di hosting static),
-    // alihkan otomatis ke database lokal in-browser
-    if (endpoint.startsWith('/api/')) {
-      try {
-        return await handleLocalFallbackRequest(endpoint, options);
-      } catch (localErr: any) {
-        throw localErr;
-      }
-    }
-    throw networkOrServerError;
-  }
+  return data;
 }
 
 export const api = {
-  // Autentikasi Sekolah & Sesi
-  getSchools: () => request('/api/auth/schools'),
-  loginSchool: (schoolQuery: string, password: string) =>
-    request('/api/auth/login-school', {
+  // Tahap 1: Supabase Setup & Schools
+  getSetupStatus: () => request('/api/setup/status'),
+  runSetup: (payload: { email?: string; password?: string; nama?: string }, setupToken: string) =>
+    request('/api/setup', {
       method: 'POST',
-      body: JSON.stringify({ schoolQuery, password }),
+      headers: {
+        'x-setup-token': setupToken,
+      },
+      body: JSON.stringify({ ...payload, setupToken }),
     }),
+  getPublicSchools: () => request('/api/public-schools'),
+  getSchools: () => request('/api/public-schools'),
+  loginSchool: (schoolQuery: string, password: string) =>
+    request('/api/school-login', {
+      method: 'POST',
+      body: JSON.stringify({ school_id: schoolQuery, schoolQuery, password }),
+    }),
+  getAllSchools: (supabaseToken?: string) => {
+    const headers: Record<string, string> = {};
+    if (supabaseToken) headers['Authorization'] = `Bearer ${supabaseToken}`;
+    return request('/api/schools', { headers });
+  },
+  createSchool: (payload: { nama: string; kode: string; password: string }, supabaseToken?: string) => {
+    const headers: Record<string, string> = {};
+    if (supabaseToken) headers['Authorization'] = `Bearer ${supabaseToken}`;
+    return request('/api/schools', {
+      method: 'POST',
+      headers,
+      body: JSON.stringify(payload),
+    });
+  },
+  updateSchool: (id: string, payload: { nama?: string; kode?: string; status?: string; password?: string }, supabaseToken?: string) => {
+    const headers: Record<string, string> = {};
+    if (supabaseToken) headers['Authorization'] = `Bearer ${supabaseToken}`;
+    return request(`/api/schools/${id}`, {
+      method: 'PUT',
+      headers,
+      body: JSON.stringify({ id, ...payload }),
+    });
+  },
+  toggleSchoolStatus: (id: string, status: 'aktif' | 'nonaktif', supabaseToken?: string) => {
+    const headers: Record<string, string> = {};
+    if (supabaseToken) headers['Authorization'] = `Bearer ${supabaseToken}`;
+    return request(`/api/schools/${id}/status`, {
+      method: 'PATCH',
+      headers,
+      body: JSON.stringify({ id, status }),
+    });
+  },
+  deleteSchool: (id: string, supabaseToken?: string) => {
+    const headers: Record<string, string> = {};
+    if (supabaseToken) headers['Authorization'] = `Bearer ${supabaseToken}`;
+    return request(`/api/schools/${id}`, {
+      method: 'DELETE',
+      headers,
+      body: JSON.stringify({ id }),
+    });
+  },
+
   loginSuperadmin: (superPassword: string, superEmailOrUsername: string = 'presensiapp138@gmail.com') =>
     request('/api/auth/superadmin-login', {
       method: 'POST',

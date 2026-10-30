@@ -8,6 +8,11 @@ import cookieParser from 'cookie-parser';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
+import setupHandler from './api/setup';
+import publicSchoolsHandler from './api/public-schools';
+import schoolLoginHandler from './api/school-login';
+import schoolsHandler from './api/schools';
+
 const app = express();
 // Runtime Environment requires Port 3000. Do not use container PORT (e.g. 8080) which conflicts with proxy.
 const PORT = process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT, 10) : 3000;
@@ -15,6 +20,12 @@ const PORT = process.env.SERVER_PORT ? parseInt(process.env.SERVER_PORT, 10) : 3
 app.use(express.json({ limit: '25mb' }));
 app.use(express.urlencoded({ extended: true, limit: '25mb' }));
 app.use(cookieParser());
+
+// Tahap 1: Supabase Multi-Device Endpoints
+app.all(['/api/setup', '/api/setup/status'], (req, res) => setupHandler(req, res));
+app.all(['/api/public-schools', '/api/auth/schools'], (req, res) => publicSchoolsHandler(req, res));
+app.all(['/api/school-login', '/api/auth/login-school'], (req, res) => schoolLoginHandler(req, res));
+app.all(['/api/schools', '/api/schools/:id', '/api/schools/:id/status'], (req, res) => schoolsHandler(req, res));
 
 // CORS & Preflight handler agar tidak ada kendala cross-origin saat di-deploy
 app.use((req, res, next) => {
